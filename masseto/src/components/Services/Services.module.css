@@ -1,0 +1,168 @@
+.services {
+  padding: 6rem 0 8rem;
+}
+
+/* ── Three-column horizontal layout ── */
+
+.inner {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top:    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  max-width:     1440px;
+  margin:        0 auto;
+}
+
+.item {
+  padding:         5rem 4.5vw;
+  position:        relative;
+  transition:
+    background var(--transition-mid),
+    opacity    1s var(--ease-luxury),
+    transform  1s var(--ease-luxury);
+  display:         flex;
+  flex-direction:  column;
+  text-decoration: none;
+  color:           inherit;
+  cursor:          none;
+  opacity:         0;
+  transform:       translateY(28px);
+}
+
+/* Stagger in when parent has .visible */
+.services.visible .item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s;     }
+.services.visible .item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.16s;  }
+.services.visible .item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.32s;  }
+
+/* Thin vertical separator between items */
+.item:not(:last-child)::after {
+  content:    '';
+  position:   absolute;
+  top:        0;
+  right:      0;
+  width:      1px;
+  height:     100%;
+  background: var(--border);
+}
+
+.item:hover {
+  background: var(--bg-card-hover);
+}
+
+/* Roman numeral */
+.numeral {
+  font-family:    var(--font-display);
+  font-size:      0.8rem;
+  font-style:     italic;
+  font-weight:    300;
+  letter-spacing: 0.22em;
+  color:          var(--accent);
+  display:        block;
+  margin-bottom:  2.5rem;
+}
+
+/* Service name */
+.name {
+  font-family:    var(--font-display);
+  font-size:      clamp(1.8rem, 2.8vw, 2.8rem);
+  font-weight:    300;
+  line-height:    1.05;
+  margin-bottom:  1.75rem;
+  letter-spacing: 0.02em;
+  color:          var(--text-primary);
+}
+
+/* Description — small-caps uppercase body text */
+.description {
+  font-family:    var(--font-body);
+  font-size:      0.72rem;
+  line-height:    1.8;
+  letter-spacing: 0.058em;
+  color:          var(--text-secondary);
+  font-weight:    300;
+  text-transform: uppercase;
+}
+
+/* CTA link */
+.cta {
+  font-family:    var(--font-body);
+  font-size:      0.58rem;
+  font-weight:    400;
+  letter-spacing: 0.34em;
+  color:          var(--accent);
+  margin-top:     auto;
+  padding-top:    2.5rem;
+  opacity:        0;
+  transform:      translateY(8px);
+  transition:
+    opacity   var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.item:hover .cta {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 1024px) {
+  .item {
+    padding: 4rem 3.5vw;
+  }
+
+  .numeral {
+    margin-bottom: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 4rem 0 6rem;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Swap vertical to horizontal borders on mobile */
+  .item:not(:last-child)::after {
+    top:       auto;
+    right:     0;
+    bottom:    0;
+    width:     100%;
+    height:    1px;
+  }
+
+  .item {
+    padding: 3.5rem 6vw;
+  }
+
+  /* Always show CTA on touch */
+  .cta {
+    opacity:   1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 3rem 0 4rem;
+  }
+
+  .item {
+    padding: 2.5rem 6vw;
+  }
+
+  .numeral {
+    margin-bottom: 1.2rem;
+  }
+
+  .name {
+    margin-bottom: 1rem;
+  }
+
+  .cta {
+    padding-top: 1.5rem;
+  }
+}

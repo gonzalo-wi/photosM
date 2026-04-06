@@ -1,0 +1,125 @@
+.about {
+  padding:    12rem 6vw;
+  opacity:    0;
+  transform:  translateY(50px);
+  transition: opacity 1s var(--ease-luxury), transform 1s var(--ease-luxury);
+}
+
+.about.visible {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* ── Two-column asymmetric layout ── */
+
+.inner {
+  display:               grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap:                   0 5.5vw;
+  align-items:           start;
+  max-width:             1440px;
+  margin:                0 auto;
+}
+
+/* ── Pull quote — left column ── */
+
+.pullQuote {
+  font-family:    var(--font-display);
+  font-style:     italic;
+  font-weight:    300;
+  font-size:      clamp(2.4rem, 4.6vw, 4.4rem);
+  line-height:    1.22;
+  color:          var(--text-primary);
+  letter-spacing: -0.015em;
+  quotes:         none;
+}
+
+/* ── Vertical gold divider ── */
+
+.divider {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent) 14%,
+    var(--accent) 86%,
+    transparent 100%
+  );
+  opacity:    0.30;
+  align-self: stretch;
+  min-height: 200px;
+}
+
+/* ── Body text — right column, offset 80px down ── */
+
+.right {
+  padding-top:    80px;
+  font-family:    var(--font-body);
+  font-size:      0.9rem;
+  line-height:    1.88;
+  color:          var(--text-secondary);
+  font-weight:    300;
+  letter-spacing: 0.018em;
+  text-align:     justify;
+  hyphens:        auto;
+  -webkit-hyphens: auto;
+}
+
+.right p + p {
+  margin-top: 1.85rem;
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 768px) {
+  .about {
+    padding: 7rem 6vw;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-rows:    auto 1px auto;
+    gap:                   3.5rem 0;
+  }
+
+  /* Reorient divider to horizontal */
+  .divider {
+    min-height: unset;
+    height:     1px;
+    align-self: auto;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      var(--accent) 18%,
+      var(--accent) 82%,
+      transparent 100%
+    );
+  }
+
+  .right {
+    padding-top: 0;
+  }
+
+  .pullQuote {
+    font-size: clamp(2rem, 7.5vw, 3.2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 5rem 5vw;
+  }
+
+  .inner {
+    gap: 2.5rem 0;
+  }
+
+  .pullQuote {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .right {
+    font-size:   0.82rem;
+    line-height: 1.75;
+    text-align:  left;
+  }
+}

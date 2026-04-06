@@ -1,0 +1,218 @@
+.portfolio {
+  padding:    8rem 6vw 14rem;
+  opacity:    0;
+  transform:  translateY(50px);
+  transition: opacity 1s var(--ease-luxury), transform 1s var(--ease-luxury);
+}
+
+.portfolio.visible {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* ── Section header ── */
+
+.sectionHeader {
+  position:       relative;
+  margin-bottom:  5rem;
+  display:        flex;
+  align-items:    flex-end;
+  gap:            2rem;
+  padding-bottom: 1rem;
+}
+
+/* "01" watermark — stroke text behind the label */
+.number {
+  position:            absolute;
+  top:                 -0.52em;
+  left:                -0.06em;
+  font-family:         var(--font-display);
+  font-size:           clamp(6rem, 13.5vw, 12.5rem);
+  font-weight:         300;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.052);
+  color:               transparent;
+  line-height:         1;
+  letter-spacing:      0.06em;
+  pointer-events:      none;
+  user-select:         none;
+  white-space:         nowrap;
+}
+
+.headerText {
+  position:    relative;
+  z-index:     1;
+  padding-left: 0.6rem;
+}
+
+.sectionTitle {
+  font-family:    var(--font-body);
+  font-size:      0.70rem;
+  font-weight:    400;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color:          var(--text-muted);
+  line-height:    1;
+}
+
+.sectionSub {
+  font-family:    var(--font-body);
+  font-size:      0.75rem;
+  font-weight:    300;
+  letter-spacing: 0.04em;
+  color:          var(--text-muted);
+  display:        block;
+  margin-top:     0.55rem;
+}
+
+/* ── Masonry grid ── */
+
+.grid {
+  columns:    3;
+  column-gap: 0.9rem;
+  max-width:  1440px;
+}
+
+.item {
+  break-inside:  avoid;
+  margin-bottom: 0.9rem;
+  cursor:        none;
+}
+
+/* Inner wrapper handles overflow + border-on-hover */
+.itemInner {
+  position: relative;
+  overflow: hidden;
+}
+
+.itemInner::after {
+  content:          '';
+  position:         absolute;
+  inset:            0;
+  border:           1px solid rgba(201, 168, 76, 0);
+  transition:       border-color 0.5s var(--ease-luxury);
+  pointer-events:   none;
+  z-index:          2;
+}
+
+.item:hover .itemInner::after {
+  border-color: var(--accent-border);
+}
+
+/* Placeholder — dark coloured box, scales on hover */
+.photo {
+  width:       100%;
+  display:     block;
+  object-fit:  cover;
+  filter:      brightness(0.82) contrast(1.08) saturate(0.72);
+  transition:
+    transform var(--transition-slow),
+    filter    var(--transition-mid);
+}
+
+.item:hover .photo {
+  transform: scale(1.03);
+  filter:    brightness(0.90) contrast(1.05) saturate(0.80);
+}
+
+/* ── Hover label — slides up from bottom ── */
+
+.itemLabel {
+  position:    absolute;
+  bottom:      0;
+  left:        0;
+  right:       0;
+  padding:     2rem 1.25rem 1.1rem;
+  background:  linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, transparent 100%);
+  transform:   translateY(100%);
+  transition:  transform 0.55s var(--ease-luxury);
+  display:     flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index:     1;
+}
+
+.item:hover .itemLabel {
+  transform: translateY(0);
+}
+
+.labelCategory {
+  font-family:    var(--font-body);
+  font-size:      0.58rem;
+  font-weight:    400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color:          rgba(232, 228, 220, 0.75);
+}
+
+.labelYear {
+  font-family: var(--font-display);
+  font-style:  italic;
+  font-size:   0.95rem;
+  font-weight: 300;
+  color:       var(--accent);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1100px) {
+  .grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 5rem 5vw 9rem;
+  }
+
+  .grid {
+    columns:    2;
+    column-gap: 0.6rem;
+  }
+
+  .item {
+    margin-bottom: 0.6rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 3.5rem;
+  }
+
+  .number {
+    font-size: clamp(4rem, 14vw, 7rem);
+  }
+
+  /* Always show labels on touch */
+  .itemLabel {
+    transform: translateY(0);
+    padding:   1.2rem 0.8rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio {
+    padding: 4rem 4vw 6rem;
+  }
+
+  .grid {
+    columns:    1;
+    column-gap: 0;
+  }
+
+  .item {
+    margin-bottom: 0.7rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 2.5rem;
+  }
+
+  .number {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+
+  .labelCategory {
+    font-size:      0.52rem;
+    letter-spacing: 0.20em;
+  }
+}
