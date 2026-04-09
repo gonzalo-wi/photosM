@@ -1,5 +1,5 @@
 .about {
-  padding:    12rem 6vw;
+  padding:    6rem 6vw;
   opacity:    0;
   transform:  translateY(50px);
   transition: opacity 1s var(--ease-luxury), transform 1s var(--ease-luxury);
@@ -52,16 +52,16 @@
 /* ── Body text — right column, offset 80px down ── */
 
 .right {
-  padding-top:    80px;
-  font-family:    var(--font-body);
-  font-size:      0.9rem;
-  line-height:    1.88;
-  color:          var(--text-secondary);
-  font-weight:    300;
-  letter-spacing: 0.018em;
-  text-align:     justify;
-  hyphens:        auto;
-  -webkit-hyphens: auto;
+  padding-top:     80px;
+  font-family:     var(--font-body);
+  font-size:       0.9rem;
+  line-height:     1.88;
+  color:           var(--text-secondary);
+  font-weight:     300;
+  letter-spacing:  0.018em;
+  text-align:      left;
+  hyphens:         none;
+  -webkit-hyphens: none;
 }
 
 .right p + p {
@@ -72,7 +72,7 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 7rem 6vw;
+    padding: 3.5rem 6vw;
   }
 
   .inner {
@@ -106,7 +106,7 @@
 
 @media (max-width: 480px) {
   .about {
-    padding: 5rem 5vw;
+    padding: 3rem 5vw;
   }
 
   .inner {

@@ -118,6 +118,7 @@ export default function CategoryPage() {
                 alt={photo.alt}
                 className={styles.photo}
                 loading="lazy"
+                decoding="async"
               />
               <div className={styles.overlay}>
                 <span className={styles.tag}>{photo.tag}</span>

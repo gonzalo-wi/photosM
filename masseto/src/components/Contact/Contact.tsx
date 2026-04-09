@@ -1,9 +1,34 @@
+import { useEffect, useRef, useState } from 'react'
 import styles from './Contact.module.css'
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold: 0.15 }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <footer className={styles.contact} id="contact">
-      {/* ── Top section ── */}
+    <footer
+      ref={sectionRef}
+      className={`${styles.contact} ${isVisible ? styles.visible : ''}`}
+      id="contact"
+    >      {/* ── Top section ── */}
       <div className={styles.top}>
         <span className={styles.label}>Contacto</span>
         <div className={styles.line} aria-hidden="true" />

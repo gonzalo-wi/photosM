@@ -149,11 +149,11 @@ export default function Admin() {
   }
 
   /* ── Remove one file from preview ── */
-  const removePreview = (index: number) => {
-    URL.revokeObjectURL(previews[index])
-    setPendingFiles((prev) => prev.filter((_, i) => i !== index))
-    setPreviews((prev) => prev.filter((_, i) => i !== index))
-  }
+  // const removePreview = (index: number) => {
+  //   URL.revokeObjectURL(previews[index])
+  //   setPendingFiles((prev) => prev.filter((_, i) => i !== index))
+  //   setPreviews((prev) => prev.filter((_, i) => i !== index))
+  // }
 
   /* ── Delete ── */
   const handleDelete = async (photo: PhotoRow) => {

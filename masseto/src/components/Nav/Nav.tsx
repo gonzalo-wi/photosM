@@ -88,7 +88,9 @@ export default function Nav() {
       <button
         className={styles.hamburger}
         onClick={() => setMenuOpen((v) => !v)}
-        aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-label={menuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+        aria-expanded={menuOpen}
+        aria-controls="main-nav"
       >
         <span className={styles.hamburgerLine} />
         <span className={styles.hamburgerLine} />
@@ -97,6 +99,7 @@ export default function Nav() {
       {/* Mobile menu overlay — rendered via portal to avoid stacking issues */}
       {createPortal(
         <nav
+          id="main-nav"
           className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}
           aria-label="Menú móvil"
           aria-hidden={!menuOpen}

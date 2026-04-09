@@ -30,7 +30,7 @@ export default function Hero() {
 
       {/* Central name block */}
       <div className={styles.content}>
-        <div className={styles.nameBlock}>
+        <h1 className={styles.nameBlock}>
           <span className={`${styles.nameLine} ${styles.animate0}`}>
             DANIEL
           </span>
@@ -40,18 +40,29 @@ export default function Hero() {
           <span className={`${styles.nameLine} ${styles.animate400}`}>
             MASETTO
           </span>
-        </div>
+        </h1>
 
         {/* Horizontal rule — draws left→right on load */}
         <div className={`${styles.rule} ${styles.animate600}`} aria-hidden="true" />
+
+        {/* SEO — visible to search engines, hidden visually */}
+        <p className={styles.srOnly}>
+          Fotógrafo especializado en música, bandas y festivales en Buenos Aires, Argentina.
+          Cobertura de shows en vivo, backstage, sesiones editoriales y arte.
+        </p>
       </div>
 
       {/* Scroll indicator */}
-      <div className={styles.scrollIndicator} onClick={scrollDown} role="button" aria-label="Ir al contenido">
-        <span className={styles.scrollLabel}>bajar</span>
-        <div className={styles.scrollTrack}>
-          <div className={styles.scrollDot} />
-        </div>
+      <div
+        className={styles.scrollIndicator}
+        onClick={scrollDown}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollDown() } }}
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll hacia abajo"
+      >
+        <div className={styles.scrollLine} />
+        <div className={styles.scrollDotNew} />
       </div>
     </section>
   )

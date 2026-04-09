@@ -25,6 +25,10 @@
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
+.nav.menuOpen {
+  z-index: 110;
+}
+
 /* ── Brand ── */
 
 .brand {

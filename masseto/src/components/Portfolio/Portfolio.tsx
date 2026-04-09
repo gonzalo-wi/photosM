@@ -85,6 +85,7 @@ export default function Portfolio() {
                 alt={item.alt}
                 className={styles.photo}
                 loading="lazy"
+                decoding="async"
               />
               <div className={styles.itemLabel}>
                 <span className={styles.labelCategory}>{item.category}</span>
